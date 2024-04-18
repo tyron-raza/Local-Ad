@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze:wght@700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -27,9 +30,9 @@
             class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark-mode:text-gray-200 dark-mode:bg-gray-800"
             x-data="{ open: false }">
             <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
-                <a href="#"
-                    class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
-                    Classified Admin</a>
+                    <a href="#" class="flex title-font font-l items-center text-gray-900 mb-4 md:mb-0" style="font-family:'Sora', serif;font-weight: 700; font-style: normal; font-size: large">
+                        <span  class="ml-3 text-3xl">Local Ad.</span>
+                    </a>
                 <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                         <path x-show="!open" fill-rule="evenodd"

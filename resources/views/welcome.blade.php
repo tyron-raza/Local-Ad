@@ -1,4 +1,5 @@
-<x-main-layout>
+<section style="background-image: url('https://www.shutterstock.com/image-photo/stunning-3d-render-abstract-multicolor-600nw-2308145041.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    <x-main-layout>
     <x-slot name="header">
         <x-main-header></x-main-header>
     </x-slot>
@@ -49,3 +50,4 @@
     </section>
     <x-main-footer></x-main-footer>
 </x-main-layout>
+</section>

@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\ListingController as FrontendListingController
 use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,16 +25,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendListingController::class, 'welcome'])->name('welcome');
-
-
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
 
 Route::get('/all-listings', [FrontendListingController::class, 'index'])
     ->name('all-listings');
 
+use App\Models\User; // Import the User model
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // auth()->user()->assignRole('admin');
+    $user = User::find(1); 
+
+    if ($user) {
+        $user->assignRole('admin');
+    }
+
     return view('dashboard');
 })->name('dashboard');
+    
+    
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
@@ -41,6 +51,7 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->name('admin.
     Route::resource('categories', CategoryController::class);
     Route::get('categories/{category}/add-sub', [CategoryController::class, 'add_sub'])->name('add_sub');
     Route::post('categories/{category}/add-sub', [CategoryController::class, 'add_sub_store'])->name('add_sub.store');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
     Route::resource('subcategories', SubCategoryController::class);
     Route::resource('childcategories', ChildCategoryController::class);
