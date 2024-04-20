@@ -67,7 +67,7 @@ class ListingController extends Controller
             'image_two' => $image_two,
             'image_three' => $image_three,
         ]);
-
+        dd($request->all());
         return redirect()->route('listings.index')->with('message', 'Listing created successfully');
     }
 

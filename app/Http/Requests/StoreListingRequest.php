@@ -39,9 +39,9 @@ class StoreListingRequest extends FormRequest
         'phone_number' => 'required',
         'is_published' => 'required',
         'featured_image' => 'image|nullable',
-        'image_one' => 'image|required',
-        'image_two' => 'image|required',
-        'image_three' => 'image|required',
+        'image_one' => 'image|nullable',
+        'image_two' => 'image|nullable',
+        'image_three' => 'image|nullable',
         ];
     }
 }

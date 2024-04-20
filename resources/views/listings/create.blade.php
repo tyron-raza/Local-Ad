@@ -18,7 +18,7 @@
                                 <div class="grid grid-cols-6 gap-6">
 
                                     <div class="col-span-6">
-                                        <label for="title" class="block text-sm font-medium text-gray-700">
+                                        <label for="Title" class="block text-sm font-medium text-gray-700">
                                             Title
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="col-span-6">
                                         <label for="description" class="block text-sm font-medium text-gray-700">
-                                            Descripttion
+                                            Description
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <textarea type="text" name="description" id="description"
