@@ -41,9 +41,6 @@ class ListingController extends Controller
     public function store(StoreListingRequest $request)
     {
         $featured_image = $request->file('featured_image')->store('public/listings');
-        $image_one = $request->file('image_one')->store('public/listings');
-        $image_two = $request->file('image_two')->store('public/listings');
-        $image_three = $request->file('image_three')->store('public/listings');
 
         Listing::create([
             'user_id' => auth()->user()->id,
@@ -62,12 +59,8 @@ class ListingController extends Controller
             'country_id' => $request->country_id,
             'city_id' => $request->city_id,
             'state_id' => $request->state_id,
-            'featured_image' => $featured_image,
-            'image_one' => $image_one,
-            'image_two' => $image_two,
-            'image_three' => $image_three,
+            'featured_image' => $featured_image
         ]);
-        dd($request->all());
         return redirect()->route('listings.index')->with('message', 'Listing created successfully');
     }
 
@@ -96,9 +89,7 @@ class ListingController extends Controller
         $listing = Listing::find($id);
 
         $featured_image = $listing->featured_image;
-        $image_one = $listing->image_one;
-        $image_two = $listing->image_two;
-        $image_three = $listing->image_three;
+
 
 
         if ($request->hasFile('featured_image')) {
@@ -131,9 +122,6 @@ class ListingController extends Controller
             'city_id' => $request->city_id,
             'state_id' => $request->state_id,
             'featured_image' => $featured_image,
-            'image_one' => $image_one,
-            'image_two' => $image_two,
-            'image_three' => $image_three,
         ]);
 
         return redirect()->route('listings.index')->with('message', 'Listing updated successfully');
@@ -150,9 +138,6 @@ class ListingController extends Controller
         $listing = Listing::findOrFail($id);
 
         Storage::delete($listing->featured_image);
-        Storage::delete($listing->image_one);
-        Storage::delete($listing->image_two);
-        Storage::delete($listing->image_three);
         $listing->delete();
         return redirect()->route('listings.index')->with('message', 'Listing deleted successfully');
     }

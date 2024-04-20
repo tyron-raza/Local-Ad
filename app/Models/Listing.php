@@ -13,9 +13,6 @@ class Listing extends Model
     protected $fillable = [
         'user_id',
         'featured_image',
-        'image_one',
-        'image_two',
-        'image_three',
         'category_id',
         'sub_category_id',
         'child_category_id',

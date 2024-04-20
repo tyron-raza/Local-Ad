@@ -27,13 +27,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendListingController::class, 'welcome'])->name('welcome');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::post('/listings', [ListingController::class, 'store'])->name('listings.store');
 Route::get('/Admin', [CategoryController::class, 'index'])->name('admincategories.index');
 Route::get('/childcategories', [ChildCategoryController::class, 'index'])->name('childcategories.index');
 Route::get('/all-listings', [FrontendListingController::class, 'index'])
     ->name('all-listings');
 Route::get('/admin', [AdminController::class, 'index'])->name('index');
 Route::resource('listings', AdminListingsController::class);
-Route::get('/listings', 'ListingController@index')->name('listings.index');
+Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
 Route::resource('categories', CategoryController::class);
 Route::get('categories/{category}/add-sub', [CategoryController::class, 'add_sub'])->name('add_sub');
 Route::post('categories/{category}/add-sub', [CategoryController::class, 'add_sub_store'])->name('add_sub.store');
@@ -60,19 +61,26 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/', [FrontendListingController::class, 'welcome'])->name('welcome');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::post('/listings', [ListingController::class, 'store'])->name('listings.store');
+    Route::get('/Admin', [CategoryController::class, 'index'])->name('admincategories.index');
+    Route::get('/childcategories', [ChildCategoryController::class, 'index'])->name('childcategories.index');
+    Route::get('/all-listings', [FrontendListingController::class, 'index'])
+        ->name('all-listings');
+    Route::get('/admin', [AdminController::class, 'index'])->name('index');
     Route::resource('listings', AdminListingsController::class);
+    Route::get('/listings', 'ListingController@index')->name('listings.index');
     Route::resource('categories', CategoryController::class);
     Route::get('categories/{category}/add-sub', [CategoryController::class, 'add_sub'])->name('add_sub');
     Route::post('categories/{category}/add-sub', [CategoryController::class, 'add_sub_store'])->name('add_sub.store');
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-
     Route::resource('subcategories', SubCategoryController::class);
     Route::resource('childcategories', ChildCategoryController::class);
     Route::resource('countries', CountryController::class);
     Route::get('countries/{country}/add-state', [CountryController::class, 'add_state'])->name('add_state');
     Route::post('countries/{country}/add-state', [CountryController::class, 'add_state_store'])->name('add_state.store');
-
     Route::resource('states', StateController::class);
     Route::resource('cities', CityController::class);
 });

@@ -17,9 +17,6 @@ class CreateListingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('featured_image');
-            $table->string('image_one')->nullable();
-            $table->string('image_two')->nullable();
-            $table->string('image_three')->nullable();
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('sub_category_id')->nullable();
             $table->unsignedInteger('child_category_id')->nullable();
