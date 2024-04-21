@@ -12,7 +12,6 @@ use App\Http\Controllers\Frontend\ListingController as FrontendListingController
 use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,17 +22,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// routes/web.php
 
 Route::get('/', [FrontendListingController::class, 'welcome'])->name('welcome');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::post('/listings', [ListingController::class, 'store'])->name('listings.store');
+Route::resource('listings', AdminListingsController::class);
+Route::get('/listings', [AdminListingsController::class, 'index'])->name('admin.listings.index');
 Route::get('/Admin', [CategoryController::class, 'index'])->name('admincategories.index');
 Route::get('/childcategories', [ChildCategoryController::class, 'index'])->name('childcategories.index');
 Route::get('/all-listings', [FrontendListingController::class, 'index'])
     ->name('all-listings');
-Route::get('/admin', [AdminController::class, 'index'])->name('index');
-Route::resource('listings', AdminListingsController::class);
+Route::get('/admin', [AdminController::class, 'index'])->name('index'); 
 Route::get('/listings', [ListingController::class, 'index'])->name('listings.index');
 Route::resource('categories', CategoryController::class);
 Route::get('categories/{category}/add-sub', [CategoryController::class, 'add_sub'])->name('add_sub');

@@ -1,7 +1,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Grenze:wght@700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
-     <header id="form-filter">
+     <header id="form-filter" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTViaKwXSBIAFZvYsjyzPkewnM1Awc-UxHHqk6v9wLzA&s')">
          <div class="w-full m-4 p-4" style= 'font-family: "Sora", sans-serif;font-optical-sizing: auto;font-weight: 500;font-style: normal;'>
              <div class="flex items-center justify-center w-full h-full">
                  <div class="text-center">
