@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -35,4 +36,6 @@ class ListingController extends Controller
 
         return view('welcome', compact('categories', 'featured_ads'));
     }
+
 }
+

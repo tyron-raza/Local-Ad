@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 
 Route::get('/', [FrontendListingController::class, 'welcome'])->name('welcome');
+Route::get('/post_details/{id}', [ListingController::class, 'post_details'])->name('listings.post_details');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::post('/listings', [ListingController::class, 'store'])->name('listings.store');
@@ -47,6 +48,8 @@ Route::get('countries/{country}/add-state', [CountryController::class, 'add_stat
 Route::post('countries/{country}/add-state', [CountryController::class, 'add_state_store'])->name('add_state.store');
 Route::resource('states', StateController::class);
 Route::resource('cities', CityController::class);
+
+
 
 use App\Models\User; // Import the User model
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -84,6 +87,7 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->name('admin.
     Route::post('countries/{country}/add-state', [CountryController::class, 'add_state_store'])->name('add_state.store');
     Route::resource('states', StateController::class);
     Route::resource('cities', CityController::class);
+    Route::get('/post_details/{$id}', [ListingController::class,'post_details']);
 });
 
 

@@ -44,4 +44,8 @@ class Listing extends Model
     {
         return $query->where('price', '<', $max_price);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

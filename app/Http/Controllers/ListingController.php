@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreListingRequest;
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -141,4 +142,18 @@ class ListingController extends Controller
         $listing->delete();
         return redirect()->route('listings.index')->with('message', 'Listing deleted successfully');
     }
+
+    
+        public function post_details($id)
+        {
+            // Retrieve the listing details from the database
+            $listing = Listing::with('user')->findOrFail($id);
+
+            // Retrieve the user details using the user_id from the listing
+            $user = User::find($listing->user_id);
+    
+            // Pass both listing and user details to the view
+            return view('listings.post_details', ['listing' => $listing, 'user' => $user]);
+        }
+
 }

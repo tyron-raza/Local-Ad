@@ -28,7 +28,7 @@
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">{{ $ad->title }}</h2>
                         <p class="leading-relaxed text-base">{{ $ad->description }}</p>
-                        <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                        <a class="mt-3 text-indigo-500 inline-flex items-center" href="{{url('post_details', $ad->id)}}">Learn More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>

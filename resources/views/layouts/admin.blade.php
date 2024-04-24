@@ -46,9 +46,9 @@
                 <x-app-link class="bg-green-500 hover:bg-green-600" href="{{ route('listings.create') }}"
                     :active="request()->routeIs('listings.create')">New Listing
                 </x-app-link>
-                <x-app-link class="bg-green-500 hover:bg-green-600" href="{{ route('admin.listings.index') }}"
+                <!-- <x-app-link class="bg-green-500 hover:bg-green-600" href="{{ route('admin.listings.index') }}"
                     :active="request()->routeIs('admin.listings.index')">All Listings
-                </x-app-link>
+                </x-app-link> -->
                 <x-app-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">Dashboard
                 </x-app-link>
                 @role('admin')
