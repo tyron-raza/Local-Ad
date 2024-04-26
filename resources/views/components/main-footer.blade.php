@@ -22,6 +22,9 @@
                     </li>
                 </nav>
             </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                <a class="title-font font-medium text-gray-100 tracking-widest text-sm mb-3" href="\feedback">Give Feedback</a>
+            </div>
         </div>
     </div>
 <div class="bg-gray-100">

@@ -85,8 +85,9 @@
                   <p class="text-base text-gray-900">{{$listing->description}}</p>
                 </div>
               </div>
+              <x-comment></x-comment>
             </div>
-            
+      
           </div>
         </div>
     </div>

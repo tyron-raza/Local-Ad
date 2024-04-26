@@ -12,6 +12,10 @@ use App\Http\Controllers\Frontend\ListingController as FrontendListingController
 use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FeedbackController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +52,8 @@ Route::get('countries/{country}/add-state', [CountryController::class, 'add_stat
 Route::post('countries/{country}/add-state', [CountryController::class, 'add_state_store'])->name('add_state.store');
 Route::resource('states', StateController::class);
 Route::resource('cities', CityController::class);
-
+Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
 
 use App\Models\User; // Import the User model
@@ -87,7 +92,7 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->name('admin.
     Route::post('countries/{country}/add-state', [CountryController::class, 'add_state_store'])->name('add_state.store');
     Route::resource('states', StateController::class);
     Route::resource('cities', CityController::class);
-    Route::get('/post_details/{$id}', [ListingController::class,'post_details']);
+    Route::get('/post_details/{id}', [ListingController::class, 'post_details'])->name('listings.post_details');
 });
 
 

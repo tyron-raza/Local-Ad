@@ -62,7 +62,7 @@ class ListingController extends Controller
             'state_id' => $request->state_id,
             'featured_image' => $featured_image
         ]);
-        return redirect()->route('listings.index')->with('message', 'Listing created successfully');
+        return redirect()->route('listings.index');
     }
 
     /**
@@ -125,7 +125,7 @@ class ListingController extends Controller
             'featured_image' => $featured_image,
         ]);
 
-        return redirect()->route('listings.index')->with('message', 'Listing updated successfully');
+        return redirect()->route('listings.index');
     }
 
     /**
@@ -140,19 +140,14 @@ class ListingController extends Controller
 
         Storage::delete($listing->featured_image);
         $listing->delete();
-        return redirect()->route('listings.index')->with('message', 'Listing deleted successfully');
+        return redirect()->route('listings.index');
     }
 
     
         public function post_details($id)
         {
-            // Retrieve the listing details from the database
             $listing = Listing::with('user')->findOrFail($id);
-
-            // Retrieve the user details using the user_id from the listing
             $user = User::find($listing->user_id);
-    
-            // Pass both listing and user details to the view
             return view('listings.post_details', ['listing' => $listing, 'user' => $user]);
         }
 
