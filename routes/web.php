@@ -11,8 +11,10 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Frontend\ListingController as FrontendListingController;
 use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedbackController;
+
+
 
 
 
@@ -54,7 +56,8 @@ Route::resource('states', StateController::class);
 Route::resource('cities', CityController::class);
 Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
-
+Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 use App\Models\User; // Import the User model
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -23,5 +23,13 @@ class FeedbackController extends Controller
 
         return redirect()->back()->with('success', 'Feedback submitted successfully!');
     }
+    public function index()
+    {
+        // Retrieve all feedbacks from the database
+        $feedbacks = Feedback::all();
+
+        // Pass the feedback data to the view
+        return view('feedback.index', compact('feedbacks'));
+    }
  
 }

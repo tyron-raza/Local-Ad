@@ -76,6 +76,10 @@
                     :active="request()->routeIs('admin.cities.index')">
                     Cities
                 </x-app-link>
+                <x-app-link href="{{ route('feedback.index') }}"
+                    :active="request()->routeIs('feedback.index')">
+                    Feedbacks
+                </x-app-link>
                 @endrole
                 @auth
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">

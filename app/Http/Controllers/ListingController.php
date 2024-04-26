@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreListingRequest;
 use App\Models\Listing;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -96,15 +97,7 @@ class ListingController extends Controller
         if ($request->hasFile('featured_image')) {
             $featured_image = $request->file('featured_image')->store('public/listings');
         }
-        if ($request->hasFile('image_one')) {
-            $image_one = $request->file('image_one')->store('public/listings');
-        }
-        if ($request->hasFile('image_two')) {
-            $image_two = $request->file('image_two')->store('public/listings');
-        }
-        if ($request->hasFile('image_three')) {
-            $image_three = $request->file('image_three')->store('public/listings');
-        }
+
 
         $listing->update([
             'category_id' => $request->category_id,
@@ -149,6 +142,9 @@ class ListingController extends Controller
             $listing = Listing::with('user')->findOrFail($id);
             $user = User::find($listing->user_id);
             return view('listings.post_details', ['listing' => $listing, 'user' => $user]);
+            
+
         }
+
 
 }

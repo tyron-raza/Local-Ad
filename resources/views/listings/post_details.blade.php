@@ -85,7 +85,9 @@
                   <p class="text-base text-gray-900">{{$listing->description}}</p>
                 </div>
               </div>
-              <x-comment></x-comment>
+
+              @include('components.comments', ['listingId' => $listing->id])
+              <x-comments></x-comments>
             </div>
       
           </div>
